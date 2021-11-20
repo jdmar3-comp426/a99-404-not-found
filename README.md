@@ -3,6 +3,14 @@
 
 COMP426 final project template repository. All your code and documentation goes here. Change this text to be a brief description of your final project. Put the name in the header above. You will change everything below to be the main technical documentation, as outlined below.
 
+## New Memeber Notes
+(11/20/21) - This group is still open to group members. In an attempt to save some time once we do have group members, I'm hoping we could plam to make the game of Blackjack for this project (gives us some freedom for aesthetics while also lessening the amount of complexity in the game rules we'd need to account for). 
+
+Here is a good overview of the game and ideas with coding it we will need to consider (doesn't include API stuff, and isn't Javascript but good to read anyways): [!Read here](https://brilliant.org/wiki/programming-blackjack/)
+
+I (Jillian) will be out of town until 11.26.21 and without ability to work on the project, but have set aside time from 11.26 onward to focus on this project. If you need to contact me, email me at jilland@live.unc.edu and i'll give you my number so we can coordinate things.
+
+
 ## First steps
 
 Other steps that you will need to take after you have cloned this repository:
