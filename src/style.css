@@ -1,0 +1,73 @@
+.gameboard {
+    border-style: solid;
+    border-color: #000000;
+    border-width: 10px;
+    background-color: #3b5f74;
+}
+
+.gameButton {
+    padding: 20px 20px;
+    cursor: pointer;
+    background-color: #FFFFFF
+}
+
+.gameButton:hover {
+    background-color: #d4d4d4
+}
+
+.menuButton {
+    width: 60px;
+    height: 20px;
+    padding: 20px 20px;
+    cursor: pointer;
+    background-color: #000000
+}
+
+.menuButton:hover{
+    background-color: #303030
+}
+
+.gameboard .card {
+    width: 40px;
+    height: 60px;
+    border-style: solid;
+    border-color: #cacaca;
+    border-width: 1px;
+    background-color: #ffffff;
+    text-align: center;
+    padding: 10px;
+}
+
+.gameboard .end {
+    background-color: #000000;
+}
+
+.user {
+    width: 40%;
+    
+}
+
+.user .info {
+
+}
+
+.house {
+    width: 40%;
+    
+}
+
+.score {
+    text-align: right;
+    font-size: 18pt;
+    font-weight: bold;
+    border-style: solid;
+    border-color: #fc8dc5;
+    border-width: 10px;
+}
+
+.match {
+    
+
+}
+
+

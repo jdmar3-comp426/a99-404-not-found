@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/jdmar3-comp426/a99-404-not-found/issues"
   },
-  "homepage": "https://github.com/jdmar3-comp426/a99-404-not-found#readme"
+  "homepage": "https://github.com/jdmar3-comp426/a99-404-not-found#readme",
+  "dependencies": {
+    "browsersync": "0.0.1-security"
+  }
 }
