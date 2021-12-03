@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- The head is what is inherent to the page but not displayed to the user-->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create New User</title>
+  <link rel="stylesheet" href="login-page.css">
+  <link rel="stylesheet" href="node_modules/bulma/css/bulma.css">
+  <!--Might have to link this to create new user js-->
+  <script defer src="login-page.js"></script>
+</head>
+
+<!-- The body is what the user interacts with-->
+<body style="background-color: darkgreen;">
+  <main id="main-block">
+    <h1 id="createUser">Create New User</h1>
+    <div id="login-error-msg-holder">
+      <p id="login-error-msg">Invalid username <span id="error-msg-second-line">and/or password</span></p>
+    </div>
+    <!--Form type necessary here to later add the functionality with the database-->
+    <form id="login-form">
+      <input type="text" name="username" id="username-field" class="login-form-field" placeholder="Username">
+      <!-- Have to use the password type to make sure the password isn't displayed while being typed-->
+      <input type="password" name="password" id="password-field" class="login-form-field" placeholder="Password">
+      <input type="password" name="password" id="password-field" class="login-form-field" placeholder="Re-type password">
+
+      <input type="submit" value="Create Account" id="login-form-submit">
+      <a href="login.html">Already have an account?</a>
+    </form>
+
+  
+  </main>
+</body>
+
+</html>

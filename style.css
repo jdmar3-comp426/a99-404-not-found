@@ -9,3 +9,57 @@
     background-color: white;
     display: inline-block;
 }
+
+* {
+    margin:0px;
+    padding:0px;
+}
+
+#sidebar{
+    position:fixed;
+    /* display: block; */
+    width:200px;
+    height: 100%;
+    background:black;
+    left:-200px;
+    transition: all 500ms linear;
+
+}
+
+#sidebar.active{
+    left: 0px;
+
+}
+
+#sidebar ul li{
+    color:black;
+    list-style:none;
+    padding: 15px 10px;
+    border-bottom: 3px solid;
+}
+
+#sidebar ul a{
+    color:white;
+    list-style:none;
+}
+
+#sidebar .toggle-btn{
+    position:absolute;
+    left:230px;
+    top:20px;
+
+}
+
+#sidebar .toggle-btn span{
+    display:block;
+    width: 30px;
+    height:5px;
+    background: black;
+    margin: 3px 0px;
+}
+
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border-top: none;
+  }
