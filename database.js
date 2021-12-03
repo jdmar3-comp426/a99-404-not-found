@@ -18,7 +18,7 @@ if (row === undefined) {
 // past stores the past ending scores of previous games as a string. ex: new_user.past="", * 1 game later* new_user.past="17" *1 more game later* new user.past="17, 14"
     const sqlInit = `
         CREATE TABLE userinfo ( id INTEGER PRIMARY KEY, user TEXT, pass TEXT, email TEXT, score INTEGER, logins INTEGER, past TEXT );
-		INSERT INTO userinfo (user, pass, score, logins, past) VALUES ('chris is cool','for making the database', 'cool@email.com' 21, 1, ""), ('will is cool','for making the API', 'cool@email.com', 0, 1, "")
+		INSERT INTO userinfo (user, pass, score, logins, past) VALUES ('chris is cool','for making the database', 'cool@email.com', 21, 1, ""), ('will is cool','for making the API', 'cool@email.com', 0, 1, "")
     `;
 // Execute SQL commands above.
     db.exec(sqlInit);
