@@ -1,5 +1,5 @@
 // set up event listener to watch for interaction with start button
-document.getElementById("startBtn").addEventListener("click", startNewGame());
+document.getElementById("startBtn").addEventListener("click", startNewGame);
 
 /*
  * startNewGame()
@@ -14,11 +14,14 @@ document.getElementById("startBtn").addEventListener("click", startNewGame());
  * 
  */
 function startNewGame() {
-    //var user = initUser(user.username, 0)
-    var user = initUser("jill") // my name for testing purposes
-    var house = initHouse()
+    clearCardsUI();
+    document.getElementById("gameState").innerHTML = "";
+    document.getElementById('startBtn').value = 'Restart'
+    user = initUser("jill") // my name for testing purposes
+    house = initHouse()
+    //var players = initPlayers(user, house);
     document.getElementById("playerName").innerHTML = user.username;
-
+    
     var cardDeck = new Array();
     cardDeck = newDeck();
     cardDeck = shuffleDeck(cardDeck);
@@ -36,25 +39,25 @@ function startNewGame() {
  * 
  */
 function newDeck() {
-    var deck = new Array();
+    cardDeck = new Array();
     var cardFaces = [2, 3, 4, 5, 6, 7, 8, 9, 10, "Jack", "Queen", "King", "Ace"]
     var cardSuits = [1, 2, 3, 4]
     for(let i = 0; i<13; i++){
         for(let j = 0; j<4; j++){
-            var cardVal = 0;
-            if(i == 10 || i == 11 || i == 12){
+            var cardVal;
+            if(i == 9 || i == 10 || i == 11){
             cardVal = 10;
-            } else if(i == 13){
+            } else if(i == 12){
             cardVal = 11;
             } else {
             cardVal = cardFaces[i];
             }
 
             var card = {face: cardFaces[i], suit: cardSuits[j], value: cardVal}
-            deck.push(card);
+            cardDeck.push(card);
         }
     }
-    return deck;
+    return cardDeck;
 }
 
 /*
@@ -96,10 +99,10 @@ function deal(user, house, cardDeck) {
         user.hand.push(userCard);
         var houseCard = cardDeck.pop();
         house.hand.push(houseCard);
-        cardUserUI(userCard);
-        cardHouseUI(houseCard);
-        userSum = userSum + user.hand[i].cardVal;
-        houseSum = houseSum + house.hand[i].cardVal;
+        cardUI(userCard, user, house, 0);
+        cardUI(houseCard, user, house, 1);
+        userSum = userSum + user.hand[i].value;
+        houseSum = houseSum + house.hand[i].value;
     }
     user.handVal = userSum
     house.handVal = houseSum
@@ -159,8 +162,36 @@ function initHouse() {
  * 
  */
 function userTurn(user, house, cardDeck) {
-    document.getElementById("hitBtn").addEventListener("click", hitUser(user, cardDeck));
-    document.getElementById("stayBtn").addEventListener("click", houseTurn(house, cardDeck));
+    document.getElementById("hitBtn").addEventListener("click", userAnon);
+    document.getElementById("stayBtn").addEventListener("click", houseAnon);
+}
+
+/*
+ * userAnon()
+ * input: none
+ * output: -
+ * dependencies: dependent on hitUser function working
+ * 
+ * description: placeholder function without parameters that calls hitUser(user, house, cardDeck)
+ * in order to allow the event listener to be cleared once the user turn has ended
+ * 
+ */
+function userAnon() {
+    hitUser(user, house, cardDeck)
+}
+
+/*
+ * houseAnon()
+ * input: none
+ * output: -
+ * dependencies: dependent on houseTurn function working
+ * 
+ * description: placeholder function without parameters that calls houseTurn(user, house, cardDeck)
+ * in order to allow the event listener to be cleared once the user turn has ended
+ * 
+ */
+function houseAnon() {
+    houseTurn(user, house, cardDeck)
 }
 
 /*
@@ -175,20 +206,18 @@ function userTurn(user, house, cardDeck) {
 function hitUser(user, house, cardDeck){
     var card = cardDeck.pop();
     user.hand.push(card);
-    cardUserUI(card)
-    var userSum = 0;
-    for(let i = 0; i<user.hand.length; i++){
-        userSum = userSum + user.hand[i].cardVal;
-    }
-    user.handVal = userSum
+    cardUI(card, user, house, 0)
+    user.handVal += card.value
     updateHandScores(user, house)
 
     if(user.handVal > 21){
-        end()
+        end(user, house)
     } else {
         userTurn(user, cardDeck)
     }
 }
+
+
 
 /*
  * houseTurn(user)
@@ -200,17 +229,17 @@ function hitUser(user, house, cardDeck){
  * is initiated.
  */
 function houseTurn(user, house, cardDeck) {
-    //document.getElementById("hitBtn").style
-    //document.getElementById("stayBtn").style
-    if(house.handVal >= 17 ) {
-        end()
-    } else {
-        var choice = Math.floor(Math.random() * 2);
-        if(choice == 1){
-            hitHouse(user, house, cardDeck)
+    if (house.handVal < 17) {
+        hitHouse(user, house, cardDeck);
+    } else if (house.handVal < user.handVal) {
+        const test = Math.random();
+        if (test > 0.5) {
+            hitHouse(user, house, cardDeck);
         } else {
-            end()
+            end(user, house)
         }
+    } else {
+        end(user, house)
     }
 }
 
@@ -227,18 +256,13 @@ function houseTurn(user, house, cardDeck) {
 function hitHouse(user, house, cardDeck) {
     var card = cardDeck.pop();
     house.hand.push(card);
-    cardHouseUI(card);
-    var houseSum = 0;
-    for(let i = 0; i<house.hand.length; i++){
-        houseSum = houseSum + house.hand[i].cardVal;
-    }
-    house.handVal = houseSum
-    updateHandScores(user, house)
-
+    cardUI(card, user, house, 1);
+    house.handVal += card.value;
+    updateHandScores(user, house);
     if(house.handVal > 21){
         end(user, house)
     } else {
-        houseTurn()
+        houseTurn(user, house, cardDeck)
     }
 }
 
@@ -253,12 +277,13 @@ function hitHouse(user, house, cardDeck) {
  * 
  */
 function end(user, house) {
+    document.getElementById("hitBtn").removeEventListener("click", userAnon);
+    document.getElementById("stayBtn").removeEventListener("click", houseAnon);
     const winString = compareHands(user, house);
     const scoreString = user.handVal + " - " + house.handVal
     document.getElementById("gameState").innerHTML = winString + "<br/>" + scoreString;
     document.getElementById("gameState").style.display = "inline-block";
     // update user database record
-    // option to start again
 }
 
 /*
@@ -279,6 +304,8 @@ function compareHands(user, house) {
     } else {
         if(house.handVal > 21){
             return "You win!" 
+        } else if(house.handVal == user.handVal) {
+            return "Push."
         } else {
             return "You lose. The House beat you!" 
         }
@@ -310,22 +337,21 @@ function updateHandScores(user, house) {
  * description: Creates card on the UI for users to see. Figures out the suit of the card
  * and assigns an icon and string. Then creates element to show the card
  * 
- * not working 12/1/21
  * 
  */
 function cardUI(card, user, house, num){
     var cardView = document.createElement("p");
-    cardView.className = "div";
+    cardView.className = "card";
 
-    var suitIcon = "";
+    var suitIcon = '';
     if(card.suit == 1){
-        suitIcon = "<3"
+        suitIcon = '&hearts;';
     } else if(card.suit == 2){
-        suitIcon = "^"
+        suitIcon = '&spades;';
     } else if(card.suit == 3){
-        suitIcon = "<>"
+        suitIcon = '&diams;';
     } else {
-        suitIcon = "~"
+        suitIcon = '&clubs;';
     }
    
     cardView.innerHTML = card.face + "<br/>" + suitIcon;
@@ -338,3 +364,24 @@ function cardUI(card, user, house, num){
         hHand.appendChild(cardView);
     }
 }
+
+/*
+ * clearCardsUI()
+ * input: -
+ * 
+ * description: clears the cards in each players hands by removing the "card" children
+ *              that were added to the html throughout the hand
+ * 
+ */
+
+function clearCardsUI() {
+    while (document.getElementById("userHand").firstChild) {
+        document.getElementById("userHand").removeChild(document.getElementById("userHand").firstChild);
+    }
+
+    while (document.getElementById("houseHand").firstChild) {
+        document.getElementById("houseHand").removeChild(document.getElementById("houseHand").firstChild);
+    }
+}
+
+

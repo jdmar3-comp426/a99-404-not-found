@@ -10,11 +10,20 @@
     <body>
         <div class="content has-text-centered">
             <h1 class="title has text-weight-bold">Blackjack</h1>
-            <input class="button is-success is-large" type="submit" id="startBtn" value="Start" onclick="startNewGame()"> 
+            <input class="button is-success is-large" type="submit" id="startBtn" value="Start" > 
         </div>
+
         <section class="hero is-fullheight has-background-dark">
+            <div class ="tile is-ancestor has-background-dark">
+                <div class="tile is-parent has-background-dark">
+                    <article class="tile is-child box has-background-dark">
+                        <section class="has-text-centered has-background-dark">
+                            <p class="title is-spaced has-text-light" id="gameState"></p>
+                        </section>
+                    </article>
+                </div>
+            </div>
             <div class="hero-body">
-                    <div class="is-hidden" id="gameState">Game Being Played</div>
                     <div class="tile is-ancestor">
                         <div class="tile is-parent">
                              <article class="tile is-child box">
@@ -27,7 +36,7 @@
                                     <input class="button is-light is-rounded" type="submit" value="Stay" id="stayBtn" onclick="houseTurn()"> 
                                     </div>
                                 <section class = "hero is-fullheight has-background-white">
-                                <div class="hero-body" id="userHand">
+                                <div class="hero-head is-fullheight" id="userHand">
                                 </div> 
                                 </section>    
                             </article>
@@ -38,8 +47,12 @@
                                 <p class="title is-spaced">House</p>
                                 <p class="subtitle" id="houseScore">0</p>
                                 </section>
+                                    <div class= "is-invisible buttons are-medium has-addons is-centered is-clickable m-4">
+                                    <input class="is-invisible button is-light is-rounded" type="submit" value="Hit" id="hitBtn" onclick="hitUser()"> 
+                                    <input class="is-invisible button is-light is-rounded" type="submit" value="Stay" id="stayBtn" onclick="houseTurn()"> 
+                                    </div>
                                 <section class = "hero is-fullheight has-background-white">
-                                    <div class="hero-body" id="houseHand">
+                                    <div class="hero-head is-fullheight" id="houseHand">
                                     </div>
                                 </section>
                             </article>

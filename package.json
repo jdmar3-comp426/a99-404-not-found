@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/jdmar3-comp426/a99-404-not-found#readme",
   "dependencies": {
+    "browser-sync": "^2.27.7",
     "browsersync": "0.0.1-security",
     "bulma": "^0.9.3"
   }
