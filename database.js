@@ -15,7 +15,7 @@ if (row === undefined) {
 // Email, username, and password should remain static until user wants to change them.
 // score will be represented by the sum of the hand of the player
 //logins keeps track of the number of times the user has logged on
-// past stores the past ending scores of previous games as a string. ex: new_user.past="", * 1 game later* new_user.past="17" *1 more game later* new user.past="17, 14"
+// past stores the past ending scores of previous games as a string. ex: new_user.past="", * 1 game later* new_user.past="17" *1 more game later* new user.past="17 14"
     const sqlInit = `
         CREATE TABLE userinfo ( id INTEGER PRIMARY KEY, user TEXT, pass TEXT, email TEXT, score INTEGER, logins INTEGER, past TEXT );
 		INSERT INTO userinfo (user, pass, score, logins, past) VALUES ('chris is cool','for making the database', 'cool@email.com', 21, 1, ""), ('will is cool','for making the API', 'cool@email.com', 0, 1, "")
