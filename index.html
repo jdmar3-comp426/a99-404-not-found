@@ -6,8 +6,25 @@
     <title></title>
     <link rel="stylesheet" href="node_modules/bulma/css/bulma.css">
     <link rel="stylesheet" href="style.css">
+    <script defer src="login-page.js"></script>
     </head>
     <body>
+
+        <!--This is the code for the sidebar-->
+        <div id="sidebar">
+            <div class="toggle-btn" onclick="toggleSidebar()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="login.html">Logout</a></li>
+
+            </ul>
+
+        </div>
         <div class="content has-text-centered">
             <h1 class="title has text-weight-bold">Blackjack</h1>
             <input class="button is-success is-large" type="submit" id="startBtn" value="Start" onclick="startNewGame()"> 
