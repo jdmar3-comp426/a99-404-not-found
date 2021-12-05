@@ -4,6 +4,8 @@
 
 Full game code featuring user registration and sign in, score history, and an interactive game against your computer adversary.
 
+View a video preview [here](https://youtu.be/ADBvFWmRDt8)
+
 ## :busts_in_silhouette: Group Members:
  - Henry Barklam
  - Jillian Anderson
