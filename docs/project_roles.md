@@ -1,24 +1,20 @@
 ## Team Roles:
-
-1. A review manager - someone to review pull requests and merge or reject them and manage the related discussions
-  Assigned To:
   
-2. A plan manager - someone to keep an eye on the overall plan and keep the project tab/to-do list up to date
+1. Game functionality - in charge of the game rules and card function for dealing, winning, and resetting
   Assigned To: Jillian Anderson
   
-3. A documentation manager - someone to keep the documentation in order and identify what is missing and needs to be documented
-  Assigned To:
-  
-4. Roles for team members to take charge or different parts of the project. Possible roles:
-    1. Front end lead
-       Assigned To:
+2. Game UI - Rendering cards and the game board
+  Assigned To: Will Robbins and Jillian Anderson
+
+3. User Profile and Login UI - rendering login fields, menu, and profile with data of previous scores
+  Assigned To: Henry Barklam
        
-    2. Back end lead
-       Assigned To:
+4. Backend, Database - creating and integrating database functionality
+  Assigned To: 
        
-    3. Databse lead
-       Assigned To:
+5. Backend, API - creating and integrating API functionality
+  Assigned To: Will Zhao
        
-    4. Design lead
-       Assigned To:
+6. Integration - reviewing merges, connecting database and API to the game
+  Assigned To: Will Robbins, all
 
