@@ -13,15 +13,32 @@ loginButton.addEventListener("click", (bclick) => {
 
     //Will have to make the field connect to the back end database to check if the
     //username and password match
-    if (username === "user" && password === "user"){
+    fetch('https://localhost:5000/app/user/username', {
+        method: 'GET',
+        body:{
+            user: username,
+            pass: password
+        }
+    }).then(response => response.json())
+    .then(data=> {
+    
+        if (username === data.user && md5(password) === data.pass){
+            alert("Login successful");
+            location.href="index.html";
+            // location.reload();
+        } 
+        else {
+            loginErrorMsg.style.opacity = 5;
+        }
+    })
+    /*if (username === "user" && password === "user"){
         alert("Login successful");
         location.href="index.html";
         // location.reload();
     } 
     else {
         loginErrorMsg.style.opacity = 5;
-    }
-
+    }*/
 })
 
 function toggleSidebar(){
