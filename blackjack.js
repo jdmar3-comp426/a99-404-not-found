@@ -17,12 +17,11 @@ function startNewGame() {
     clearCardsUI();
     document.getElementById("gameState").innerHTML = "";
     document.getElementById('startBtn').value = 'Restart'
-    user = initUser("jill") // my name for testing purposes
+    user = initUser(getUserInfo()) // get from database!
     house = initHouse()
-    //var players = initPlayers(user, house);
     document.getElementById("playerName").innerHTML = user.username;
     
-    var cardDeck = new Array();
+    let cardDeck = [];
     cardDeck = newDeck();
     cardDeck = shuffleDeck(cardDeck);
     cardDeck = deal(user, house, cardDeck);
@@ -72,8 +71,8 @@ function newDeck() {
  */
 function shuffleDeck(cardDeck){
     for(let i = 0; i<208; i++){
-        var spot1 = Math.floor(Math.random() * 53);  
-        var spot2 = Math.floor(Math.random() * 53); 
+        var spot1 = Math.floor(Math.random() * 52);  
+        var spot2 = Math.floor(Math.random() * 52); 
         var holder = cardDeck[spot1]
         cardDeck[spot1] = cardDeck[spot2]
         cardDeck[spot2] = holder;
@@ -94,6 +93,8 @@ function shuffleDeck(cardDeck){
 function deal(user, house, cardDeck) {
     var userSum = 0;
     var houseSum = 0;
+    user.handVal = 0;
+    house.handVal = 0;
     for(let i = 0; i<2; i++){
         var userCard = cardDeck.pop();
         user.hand.push(userCard);
@@ -107,6 +108,10 @@ function deal(user, house, cardDeck) {
     user.handVal = userSum
     house.handVal = houseSum
     updateHandScores(user, house)
+
+    if(house.handVal > 21 || user.handVal > 21){
+        end(user, house)
+    }
 
     return cardDeck;
 }

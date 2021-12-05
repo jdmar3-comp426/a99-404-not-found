@@ -2,12 +2,14 @@ const loginForm = document.getElementById("login-form");
 const loginButton = document.getElementById("login-form-submit");
 const loginErrorMsg = document.getElementById("login-error-msg");
 
+var username;
+
 loginButton.addEventListener("click", (bclick) => {
 
     //When this is done for the creation of user to send to the database, don't prevent default
     //Otherwise it'll prevent the submission of the data
     bclick.preventDefault();
-    const username = loginForm.username.value;
+    username = loginForm.username.value;
     const password = loginForm.password.value;
 
 
@@ -40,6 +42,10 @@ loginButton.addEventListener("click", (bclick) => {
         loginErrorMsg.style.opacity = 5;
     }*/
 })
+
+function getUserInfo(){
+    return username;
+}
 
 function toggleSidebar(){
     document.getElementById("sidebar").classList.toggle('active');
