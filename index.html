@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="vieport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="node_modules/bulma/css/bulma.css">
+    <link rel="stylesheet" href="style.css">
+    <script defer src="login-page.js"></script>
+    </head>
+    <body>
+
+        <!--This is the code for the sidebar-->
+        <div id="sidebar">
+            <div class="toggle-btn" onclick="toggleSidebar()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="login.html">Logout</a></li>
+
+            </ul>
+
+        </div>
+        <div class="content has-text-centered">
+            <h1 class="title has text-weight-bold">Blackjack</h1>
+            <input class="button is-success is-large" type="submit" id="startBtn" value="Start" > 
+        </div>
+
+        <section class="hero is-fullheight has-background-dark">
+            <div class ="tile is-ancestor has-background-dark">
+                <div class="tile is-parent has-background-dark">
+                    <article class="tile is-child box has-background-dark">
+                        <section class="has-text-centered has-background-dark">
+                            <p class="title is-spaced has-text-light" id="gameState"></p>
+                        </section>
+                    </article>
+                </div>
+            </div>
+            <div class="hero-body">
+                    <div class="tile is-ancestor">
+                        <div class="tile is-parent">
+                             <article class="tile is-child box">
+                                <section class="has-text-centered">
+                                    <p class="title is-spaced" id="playerName">Player</p>
+                                    <p class="subtitle" id="userScore">0</p>
+                                </section>
+                                    <div class= "buttons are-medium has-addons is-centered is-clickable m-4">
+                                    <input class="button is-light is-rounded" type="submit" value="Hit" id="hitBtn" onclick="hitUser()"> 
+                                    <input class="button is-light is-rounded" type="submit" value="Stay" id="stayBtn" onclick="houseTurn()"> 
+                                    </div>
+                                <section class = "hero is-fullheight has-background-white">
+                                <div class="hero-head is-fullheight" id="userHand">
+                                </div> 
+                                </section>    
+                            </article>
+                        </div>
+                        <div class="tile is-parent">
+                            <article class="tile is-child box">
+                                <section class="has-text-centered">
+                                <p class="title is-spaced">House</p>
+                                <p class="subtitle" id="houseScore">0</p>
+                                </section>
+                                    <div class= "is-invisible buttons are-medium has-addons is-centered is-clickable m-4">
+                                    <input class="is-invisible button is-light is-rounded" type="submit" value="Hit" id="hitBtn" onclick="houseTurn()"> 
+                                    <input class="is-invisible button is-light is-rounded" type="submit" value="Stay" id="stayBtn" onclick="end()"> 
+                                    </div>
+                                <section class = "hero is-fullheight has-background-white">
+                                    <div class="hero-head is-fullheight" id="houseHand">
+                                    </div>
+                                </section>
+                            </article>
+                        </div>
+                    </div>
+            </div>
+        </section>
+        <script type="text/javascript" src = "blackjack.js"></script>
+    </body>
+</html>

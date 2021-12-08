@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- The head is what is inherent to the page but not displayed to the user-->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
+  <link rel="stylesheet" href="login-page.css">
+  <link rel="stylesheet" href="node_modules/bulma/css/bulma.css">
+  <!-- Defer is used so the JS doesn't load until the HTML is done loading-->
+  <script defer src="login-page.js"></script>
+</head>
+
+<!-- The body is what the user interacts with-->
+<body background="blackjack.png">
+  <main id="main-block">
+    <h1 id="login">Welcome<br /> to <br /> Blackjack</h1>
+
+    <!--Form type necessary here to later add the functionality with the database-->
+    <form id="login-form" action="index.html" method="post">
+      <input type="text" name="username" id="username-field" class="login-form-field" placeholder="Username">
+      <!-- Have to use the password type to make sure the password isn't displayed while being typed-->
+      <input type="password" name="password" id="password-field" class="login-form-field" placeholder="*******">
+      <input type="submit" value="Login" id="login-form-submit">
+      <a href="registration.html">Don't have an account? Create one here</a>
+    </form>
+    <div id="login-error-msg-holder">
+      <p id="login-error-msg">Invalid username <span id="error-msg-second-line">and/or password</span></p>
+    </div>
+
+
+  </main>
+</body>
+
+</html>

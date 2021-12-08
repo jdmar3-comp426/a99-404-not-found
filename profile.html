@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="node_modules/bulma/css/bulma.css">
+    <link rel="stylesheet" href="style.css">
+    <script defer src="login-page.js"></script>
+    <title>User Page</title>
+</head>
+<body>
+    
+<section class="hero is-light">
+    <div class="hero-body">
+        <div class="container">
+            <h1 class="title">
+                Welcome to your profile
+            </h1>
+
+        </div>
+    </div>
+</section>
+
+<div id="sidebar">
+    <div class="toggle-btn" onclick="toggleSidebar()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="profile.html">Profile</a></li>
+        <li><a href="login.html">Logout</a></li>
+
+    </ul>
+
+</div>
+<section class="section">
+    <div class="container">
+        <div class="content has-text-centered">
+            <h1 class="title has-text-info is-family-secondary">Game Statitstics</h1>
+            <h5 class="subtitle has-text-grey is-italic">Check out your stats here</h5>
+        </div>
+        <div id="tabs">
+        <div class="tabs is-medium is-centered">
+            <ul>
+                <li onclick="openTab(event, 'Wins')"><a>Wins</a></li>
+                <li onclick="openTab(event, 'Losses')"><a>Losses</a></li>
+                <li onclick="openTab(event, 'Time Spent')"><a>Time Spent</a></li>
+                
+            </ul>
+            
+        </div>
+
+        <div id="Wins" class="tabcontent">
+            <h3>Wins</h3>
+            <p>Wins are stored here.</p>
+            <div class="tabcontent" id="windata">
+            </div> 
+        </div>
+        <div id="Losses" class="tabcontent">
+            <h3>Losses</h3>
+            <p>Losses are stored here.</p>
+            <div class="tabcontent" id="lossdata">
+            </div> 
+        </div>
+        <div id="Time Spent" class="tabcontent">
+            <h3>Time Spent</h3>
+            <p>Amount of time spent is logged here.</p>
+            <div class="tabcontent" id="timedata">
+            </div> 
+        </div>
+
+        </div>
+
+        
+    </div>
+</section>
+<script type="text/javascript" src = "profile.js"></script>
+
+</body>
+</html>
